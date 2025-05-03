@@ -11,6 +11,6 @@
         <link href="{{asset('assets/css/styles.css')}}" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
     </head>
     <body class="sb-nav-fixed">

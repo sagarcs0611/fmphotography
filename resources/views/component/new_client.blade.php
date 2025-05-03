@@ -3,50 +3,38 @@
 
 <main style="margin-left: 15%; margin-top: 5%">
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Product</h1>
+        <h1 class="mt-4">New Client</h1>
 
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="index.html" style="text-decoration: none;">Dashboard</a></li>
-            <li class="breadcrumb-item active">Product</li>
+            <li class="breadcrumb-item active">New Client</li>
         </ol>
 
         <div class="card mb-4">
             <div class="card-body">
-                <form action="{{route('add.new.product')}}" method="POST">
+                <form action="{{route('client.add')}}" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label for="product_name" class="form-label">Product Name</label>
-                        <input type="text" class="form-control" id="product_name" name="product_name" required>
+                        <label for="client_name" class="form-label">Client Name</label>
+                        <input type="text" class="form-control" id="client_name" name="client_name" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="description" class="form-label">Short Description</label>
-                        <input type="text" class="form-control" id="description" name="description" required>
+                        <label for="client_email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="client_email" name="client_email" required>
                     </div>
 
                     <div class="mb-3">
-                    <label for="description" class="form-label">Side</label>
-                        <select name="side" id="side" class="form-control" required>
-                            <option value="">Select Side</option>
-                            <option value="Single Side">Single Side</option>
-                            <option value="Both Side">Both Side</option>
-
-                        </select>
+                        <label for="client_ph" class="form-label">Phone</label>
+                        <input type="number" class="form-control" id="client_ph" name="client_ph" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="price" class="form-label">Price</label>
-                        <input type="number" class="form-control" id="price" name="price" required>
-                    </div>
-
-                    <div class="mb-3" id="service_name">
-                        <label for="service_name_1" class="form-label">Service Name</label>
-                        <input type="text" class="form-control" id="service_name_1" name="service_name[]" required>
+                        <label for="client_address" class="form-label">Address</label>
+                        <textarea name="client_address" class="form-control" id="client_address"></textarea>
 
                     </div>
-                    <button type="button" class="btn btn-primary" id="addMore">Add More</button>
-
-                    <button type="submit" class="btn btn-primary">Save Product</button>
+                    <button type="submit" class="btn btn-primary">Save Client</button>
                 </form>
             </div>
         </div>
@@ -54,6 +42,7 @@
 </main>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
+
     var counter = 2;
     $(document).ready(function() {
         $("#addMore").click(function() {
@@ -77,3 +66,4 @@
 
     });
 </script>
+

@@ -2,11 +2,11 @@
 @section('content')
 <main style="margin-left: 15%; margin-top: 5%">
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Product</h1>
+        <h1 class="mt-4">Client List</h1>
 
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="index.html" style="text-decoration: none;">Dashboard</a></li>
-            <li class="breadcrumb-item active">Product</li>
+            <li class="breadcrumb-item active">Client List</li>
         </ol>
 
         <!-- <div class="text-end">
@@ -18,35 +18,37 @@
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
-                            <th>Product Name</th>
-                            <th>Short Description</th>
-                            <th>Price</th>
+                            <th>Client Name</th>
+                            <th>Email</th>
+                            <th>Phone No</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Product Name</th>
-                            <th>Short Description</th>
-                            <th>Price</th>
+                            <th>Client Name</th>
+                            <th>Email</th>
+                            <th>Phone No</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach($product_data as $product)
+                        @foreach($client_data as $client)
                         <tr>
-                            <td>{{$product->product_name}}</td>
-                            <td>{{$product->short_description}}</td>
-                            <td>{{$product->price}}</td>
+                            <td>{{$client->name}}</td>
+                            <td>{{$client->email}}</td>
+                            <td>{{$client->ph_no}}</td>
                             <td>
                                 <div class="flex items-center gap-4">
-                                    <a href="javascript:void(0);" class="text-blue-500 edit-btn" data-bs-toggle="modal" data-bs-target="#editModal" data-id="{{$product->product_id}}" data-productName="{{$product->product_name}}" data-price="{{$product->price}}" data-description="{{$product->short_description}}">
+                                    <a href="javascript:void(0);" class="text-blue-500 edit-btn" data-bs-toggle="modal" data-bs-target="#editModal" data-id="{{$client->client_id}}" data-clientName="{{$client->name}}" data-email="{{$client->email}}" data-ph="{{$client->ph_no}}" data-address="{{$client->address}}">
                                         <i class="fas fa-edit"></i>
                                     </a>
 
-                                    <a href="javascript:void(0);" class="text-red-500 delete-btn" data-id="{{$product->product_id}}">
-                                        <i class="fas fa-trash-alt"></i>
+                                    <a href="{{ route('proposal.manage', ['uniqueId' => $client->client_unique_id]) }}" class="btn btn-success">
+                                        Create Proposal
                                     </a>
+
+
                                 </div>
                             </td>
                         </tr>
@@ -66,22 +68,11 @@
                 </div>
                 <form id="edit-form">
                     <div class="modal-body">
-                        <input type="hidden" class="form-control mb-2" placeholder="Product ID" name="product_id" id="product_id">
-                        <input type="text" class="form-control mb-2" placeholder="Product Name" name="product_name" id="product_name">
-                        <input type="text" class="form-control mb-2" placeholder="Short Description" name="product_description" id="short_description">
-                        <input type="text" class="form-control mb-2" placeholder="Price" name="price" id="price">
-
-                        <div id="product_service">
-
-                        </div>
-
-                        <div id="service_name">
-
-                        </div>
-                        <button type="button" class="btn btn-primary" id="addMore">Add More</button>
-
-
-
+                        <input type="hidden" class="form-control mb-2" placeholder="Client ID" name="client_id" id="client_id">
+                        <input type="text" class="form-control mb-2" placeholder="Client Name" name="client_name" id="client_name">
+                        <input type="email" class="form-control mb-2" placeholder="Client Email" name="client_email" id="client_email">
+                        <input type="number" class="form-control mb-2" placeholder="Client Phone" name="client_ph" id="client_ph">
+                        <textarea name="client_address" class="form-control" id="client_address"></textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -100,11 +91,12 @@
 
     // Edit and update
     $(document).on('click', '.edit-btn', function() {
-        const productId = $(this).data('id');
-        $('#product_id').val(productId);
-        document.getElementById("product_name").value = this.getAttribute("data-productName");
-        document.getElementById("price").value = this.getAttribute("data-price");
-        document.getElementById("short_description").value = this.getAttribute("data-description");
+        const clientId = $(this).data('id');
+        $('#client_id').val(clientId);
+        document.getElementById("client_name").value = this.getAttribute("data-clientName");
+        document.getElementById("client_email").value = this.getAttribute("data-email");
+        document.getElementById("client_ph").value = this.getAttribute("data-ph");
+        document.getElementById("client_address").value = this.getAttribute("data-address");
         $.ajax({
             url: "{{route('edit.product.data')}}",
             type: 'GET',
