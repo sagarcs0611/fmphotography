@@ -2,11 +2,11 @@
 @section('content')
 <main style="margin-left: 15%; margin-top: 5%">
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Client List</h1>
+        <h1 class="mt-4">Proposal List</h1>
 
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="index.html" style="text-decoration: none;">Dashboard</a></li>
-            <li class="breadcrumb-item active">Client List</li>
+            <li class="breadcrumb-item active">Proposal List</li>
         </ol>
 
         <!-- <div class="text-end">
@@ -23,7 +23,7 @@
                             <th>Phone No</th>
                             <th>Package Name</th>
                             <th>Price</th>
-                            <!-- <th>Action</th> -->
+                            <!-- <th>Status</th> -->
                         </tr>
                     </thead>
 
@@ -35,6 +35,7 @@
                             <td>{{$proposal->ph_no}}</td>
                             <td>{{$proposal->product_name}}</td>
                             <td>{{$proposal->price}}</td>
+                            <!-- <td></td> -->
                             <!-- <td> -->
 
                                 <!-- <a href="javascript:void(0);" class="text-blue-500 edit-btn" data-bs-toggle="modal" data-bs-target="#editModal" data-id="{{$proposal->client_id}}" data-productName="{{$proposal->product_name}}" data-description="{{$proposal->description}}" data-client1Name="{{$proposal->client1_name}}" data-client2Name="{{$proposal->client2_name}}" data-client1email="{{$proposal->client1_email}}" data-client2email="{{$proposal->client2_email}}" data-client1ph="{{$proposal->client1_phone}}" data-client2ph="{{$proposal->client2_phone}}" data-client1address="{{$proposal->client1_address}}" data-client2address="{{$proposal->client2_address}}" data-client1date="{{$proposal->client1_date}}" data-client2date="{{$proposal->client2_date}}">

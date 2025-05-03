@@ -5,7 +5,7 @@
                 <div class="nav">
                     <!-- <div class="sb-sidenav-menu-heading">Core</div> -->
                      @if(Auth::user()->role == 'admin')
-                        <a class="nav-link" href="index.php">
+                        <a class="nav-link" href="{{route('dashboard')}}">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
@@ -44,16 +44,26 @@
                                 </a>
                             </nav>
                         </div>
-                    @endif
-
-
 
                         <a class="nav-link" href="{{route('proposal.list')}}">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Proposal List
                         </a>
+                    @endif
 
 
+                    @if(Auth::user()->role == 'user')
+                        <a class="nav-link" href="{{route('proposal.details')}}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Proposal
+                        </a>
+
+                        <a class="nav-link" href="{{route('user.payment.history')}}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Payment History
+                        </a>
+
+                    @endif
 
 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2025 at 07:11 AM
+-- Generation Time: May 03, 2025 at 08:11 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,7 +43,8 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`client_id`, `client_unique_id`, `name`, `email`, `ph_no`, `address`, `created_at`, `updated_at`) VALUES
-(1, 'cRwZ2ovH', 'Rohan Sen', 'rohan@gmail.com', '9876543456', 'Barasat', '2025-04-26 02:37:03', '2025-04-26 02:37:03');
+(4, '2nktaptA', 'Sagar', 'sagar.cs0611@gmail.com', '7878787878', 'Barasat', '2025-05-03 00:15:01', '2025-05-03 00:15:01'),
+(5, 'xKbx6MWE', 'Swarnava', 'paulswarnabha@gmail.com', '7878787878', 'Birati', '2025-05-03 00:36:58', '2025-05-03 00:36:58');
 
 -- --------------------------------------------------------
 
@@ -117,6 +118,7 @@ CREATE TABLE `proposal` (
   `client2_email` varchar(50) DEFAULT NULL,
   `client2_address` text DEFAULT NULL,
   `client2_date` varchar(255) DEFAULT NULL,
+  `status` varchar(10) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -125,8 +127,9 @@ CREATE TABLE `proposal` (
 -- Dumping data for table `proposal`
 --
 
-INSERT INTO `proposal` (`proposal_id`, `client_id`, `user_id`, `package_name`, `side`, `client1_name`, `client1_phone`, `client1_email`, `client1_address`, `client1_date`, `client2_name`, `client2_phone`, `client2_email`, `client2_address`, `client2_date`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, '8', 'Both Side', 'Rohan Das', '9874564578', 'rohan@gmail.com', 'Madhyamgram', '2025-05-30,2025-05-01', 'Reshmi Sen', '7845986512', 'reshmi@gmail.com', 'Barasat', '2025-05-07', '2025-04-27 05:44:34', '2025-04-27 05:44:34');
+INSERT INTO `proposal` (`proposal_id`, `client_id`, `user_id`, `package_name`, `side`, `client1_name`, `client1_phone`, `client1_email`, `client1_address`, `client1_date`, `client2_name`, `client2_phone`, `client2_email`, `client2_address`, `client2_date`, `status`, `created_at`, `updated_at`) VALUES
+(1, 4, 15, '3', NULL, 'sagar', '7878787878', 'sagar.cs0611@gmail.com', 'Barasat', '2025-05-31,2025-06-01', NULL, NULL, NULL, NULL, '', '0', '2025-05-03 00:15:26', '2025-05-03 00:15:26'),
+(2, 5, 16, '3', NULL, 'Swarnava', '7878787878', 'paulswarnabha@gmail.com', 'Birati', '2025-05-04,2025-05-14', NULL, NULL, NULL, NULL, '', '1', '2025-05-03 00:37:33', '2025-05-03 00:37:33');
 
 -- --------------------------------------------------------
 
@@ -150,7 +153,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `created_at`, `updated_at`) VALUES
 (1, 'sagar karmakar', 'sagar@gmail.com', '$2y$12$Ue1PFAtI95Rl0ziqSOEPCuEb.sj7ViMhblRNNbMJNW6znic6dslFm', 'admin', '2025-04-24 10:15:05', '2025-04-24 10:15:05'),
-(2, 'Rohan Sen', 'rohan@gmail.com', '$2y$12$Ue1PFAtI95Rl0ziqSOEPCuEb.sj7ViMhblRNNbMJNW6znic6dslFm', 'user', '2025-04-24 10:15:05', '2025-04-24 10:15:05');
+(2, 'Rohan Sen', 'rohan@gmail.com', '$2y$12$Ue1PFAtI95Rl0ziqSOEPCuEb.sj7ViMhblRNNbMJNW6znic6dslFm', 'user', '2025-04-24 10:15:05', '2025-04-24 10:15:05'),
+(15, 'Sagar', 'sagar.cs0611@gmail.com', '$2y$12$EZ2MRe2iyQDcTzIEped4X.ZPUdBUb4s64.6eWk84nkZ5ii8csoXg.', 'user', '2025-05-03 00:15:26', '2025-05-03 00:15:26'),
+(16, 'Swarnava', 'paulswarnabha@gmail.com', '$2y$12$XFXrO2MELw1rEKmEtFoOautueT.VaHyeQPnBgFrstOeZNUGvQNaPy', 'user', '2025-05-03 00:37:33', '2025-05-03 00:37:33');
 
 --
 -- Indexes for dumped tables
@@ -194,7 +199,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `product_master`
@@ -212,13 +217,13 @@ ALTER TABLE `product_service`
 -- AUTO_INCREMENT for table `proposal`
 --
 ALTER TABLE `proposal`
-  MODIFY `proposal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `proposal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

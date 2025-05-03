@@ -159,14 +159,16 @@ class AdminController extends Controller
         $proposal->client2_email = $request->email_b;
         $proposal->client2_address = $request->address_b;
         $proposal->client2_date = $date_b;
+        $proposal->status = '1';
         $proposal->save();
 
 
 
         $data = [
-            'Email' => $client->name,
+            'Email' => $client->email,
             'Password' => $password
         ];
+
 
         Mail::to($client->email)->send(new sendMail($data));
 

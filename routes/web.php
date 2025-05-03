@@ -24,11 +24,11 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [AuthController::class, 'do_login'])->name('do_login');
 });
 
+Route::get('/logout', [AuthController::class, 'destroy'])->name('logout');
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/product', [AdminController::class, 'product'])->name('product');
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-    Route::get('/logout', [AuthController::class, 'destroy'])->name('logout');
     Route::get('/admin/add-new-product', [AdminController::class, 'view_add_new_product'])->name('product.new');
     Route::post('/admin/add-new-product', [AdminController::class, 'add_new_product'])->name('add.new.product');
 
@@ -56,6 +56,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/proposal', [UserController::class, 'proposal_details'])->name('proposal.details');
+    Route::get('/payment-history', [UserController::class, 'payment_history'])->name('user.payment.history');
+
 });
 
 Route::get('/', function () {
